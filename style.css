@@ -1,12 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Roboto:ital@0;1&display=swap');
- 
-html {
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
     font-family: 'Nunito';
+    background-color: #E6E6E6;
 }
 
 header {
-    font-size: large;
-    font-weight: lighter;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+main {}
+
+.background_poster {
+    position: absolute;
+    filter: blur(57.5px);
+}
+
+.upper {
+    display: flex;
 }
 
 footer {
@@ -14,6 +31,34 @@ footer {
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
+    background-color: #CECECE;
+    margin-bottom: 0;
+}
+
+.search {
+    padding: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 25px;
+    background-color: #E6E6E6;
+    height: 25px;
+}
+
+.search input {
+    outline: 0;
+    appearance: none;
+    border: 0;
+    background-color: #E6E6E6;
+    font-size: 20px;
+    transition-duration: 0.5s;
+}
+
+.search input:focus {
+    width: 28rem;
+}
+
+.search input:focus::placeholder {
+    color: transparent;
 }
 
 .Link {
@@ -23,13 +68,34 @@ footer {
     margin-bottom: 8px;
 }
 
-a{
+a {
     color: #000;
     font-variant: normal;
     text-decoration: none;
 }
-.navbar {
 
+.navbar {
+    padding-left: 1em;
+    padding-right: 0.8em;
+    margin-bottom: 0.3em;
+    height: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #CECECE;
+}
+
+.navbar div {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.line {
+    border-radius: 5px;
+    height: 1.5em;
+    width: 2px;
+    background: #A5A5A5;
 }
 
 .lang {
