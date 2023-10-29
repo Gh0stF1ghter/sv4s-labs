@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "@material/web": "^1.0.1"
+  },
+  "scripts": {
+    "start": "web-dev-server --node-resolve --open --watch"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.3.6"
   }
 }
