@@ -1,58 +1,64 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="module" src="index.js"></script>
-    <title>Movie tracker</title>
-    <script src="./script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script type="module" src="index.js"></script>
+  <title>Movie tracker</title>
+  <script src="./script.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="navbar">
-            <div>
-                <div class="search">
-                    <img src="public/icons/Search.svg" alt="search" height="20">
-                    <input type="text" placeholder="search">
-                </div>
-                <div class="line"></div>
-                <span>OMDB API</span>
-            </div>
-            <div>
-                <div class="button">
-                    <img src="public/icons/Sun.svg" alt="theme" height="20">
-                </div>
-                <div class="line"></div>
-                <div id="lang">
-                    <img src="public/icons/US-flag.svg" alt="lang" height="20">
-                </div>
-            </div>
+  <header>
+    <div class="navbar">
+      <div>
+        <div class="search">
+          <img src="public/icons/Search.svg" alt="search" height="20" />
+          <input type="text" placeholder="search" />
         </div>
-    </header>
-
-    <main>
-        <div class="video_container">
-            <video controls>
-                <source src="public/media/video.mp4" type="video/mp4">
-                No video
-            </video>
+        <div class="line"></div>
+        <span>OMDB API</span>
+      </div>
+      <div>
+        <img
+          class="theme_button"
+          src="public/icons/Sun.svg"
+          alt="theme"
+          height="20"
+          onclick="themeChange()"
+        />
+        <div class="line"></div>
+        <div class="lang">
+          <img src="public/icons/US-flag.svg" alt="lang" height="20" />
         </div>
-        <div class="movie_container">
-            
-        </div>
-    </main>
+      </div>
+    </div>
+  </header>
 
-    <footer>
-        <span>2023</span>
-        <br>
-        <a class="Link" href="https://github.com/Gh0stF1ghter/SV4S-labs/tree/lab_1-2"><img src="public/icons/github.svg"
-                alt="Github">Github Repo</a>
-    </footer>
+  <main>
+    <div class="video_container">
+      <video controls>
+        <source src="public/media/video.mp4" type="video/mp4" />
+        No video
+      </video>
+    </div>
+    <div class="movie_container"></div>
+  </main>
 
+  <footer>
+    <span>2023</span>
+    <br />
+    <a
+      class="Link"
+      href="https://github.com/Gh0stF1ghter/SV4S-labs/tree/lab_1-2"
+      ><img src="public/icons/github.svg" alt="Github" />Github Repo</a
+    >
+  </footer>
 </body>
