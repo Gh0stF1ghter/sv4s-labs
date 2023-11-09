@@ -139,6 +139,10 @@ a {
 
 #lang:hover {
     height: 4em;
-    box-shadow: #000;
+    box-shadow: 10px #000;
     width: 2em;
+}
+
+#lang .active {
+
 }
