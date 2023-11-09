@@ -8,3 +8,29 @@ const SEARCH_URL = API_URL + API_SECRET_KEY + '&s='
 //     .then((responce) => responce.json())
 //     .then((movies) => console.log(movies))
 //     .catch(error => console.log(error))
+
+// Create a select element
+const select = document.createElement('select');
+
+// Create an array of options
+const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+
+// Add each option to the select element
+options.forEach((option, index) => {
+  const optionElement = document.createElement('option');
+  optionElement.value = option;
+  optionElement.text = option;
+  select.add(optionElement);
+
+  // Add an event listener to each option
+  optionElement.addEventListener('click', () => {
+    // Remove the option from its current position
+    select.remove(index);
+
+    // Add the option to the beginning of the select element
+    select.add(optionElement, 0);
+  });
+});
+
+// Add the select element to the DOM
+document.body.appendChild(select);
