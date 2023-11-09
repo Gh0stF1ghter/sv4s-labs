@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="module" src="index.js"></script>
     <title>Movie tracker</title>
-    <!-- <script src="./script.js"></script> -->
+    <script src="./script.js"></script>
 </head>
 
 <body>
@@ -20,39 +20,31 @@
                 <div class="search">
                     <img src="public/icons/Search.svg" alt="search" height="20">
                     <input type="text" placeholder="search">
-
                 </div>
                 <div class="line"></div>
                 <span>OMDB API</span>
             </div>
             <div>
-                <md-icon-button class="button">
+                <div class="button">
                     <img src="public/icons/Sun.svg" alt="theme" height="20">
-                </md-icon-button>
+                </div>
                 <div class="line"></div>
-                <md-icon-button>
+                <div id="lang">
                     <img src="public/icons/US-flag.svg" alt="lang" height="20">
-                </md-icon-button>
+                </div>
             </div>
         </div>
     </header>
 
     <main>
-        <figure class="background_poster">
-               <img src="public/Cover-stub.png" alt="poster_blur">   
-        </figure>
-        <div>
-            <div class="upper">
-                <img src="public/icons/Arrow.svg" alt="left">
-                <div class="description">
-
-                </div>
-                <img src="public/icons/Arrow.svg" alt="right" >
-
-            </div>
-            <div class="nav">
-
-            </div>
+        <div class="video_container">
+            <video controls>
+                <source src="public/media/video.mp4" type="video/mp4">
+                No video
+            </video>
+        </div>
+        <div class="movie_container">
+            
         </div>
     </main>
 
