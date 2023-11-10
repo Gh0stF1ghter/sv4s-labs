@@ -4,33 +4,50 @@ const POSTER_API_URL = "http://img.omdbapi.com/?";
 
 const SEARCH_URL = API_URL + API_SECRET_KEY + "&s=";
 
+themeChange()
+
 function themeChange() {
-  var themeChange = document.querySelector(".theme_button");
+  const themeChange = document.getElementById("theme_button");
 
   const themeChangeElements = document.querySelectorAll(
     ".theme_button, .video_container, .movie_container, footer, a, .navbar, .lang"
   );
 
+  var src = themeChange.getAttribute("src");
+
+  var toDark = () => {
+    themeChange.setAttribute("src", "public/icons/Moon.svg");
+    themeChangeElements.forEach((element) => {
+      element.classList.add("dark");
+    });
+    document.documentElement.style.setProperty("background-color", "#191919");
+    document.getElementById("svg").style.setProperty("fill", '#fff');
+  };
+
+  if (localStorage.getItem("theme") === "dark") toDark();
+
+  var toLight = () => {    
+    themeChange.setAttribute("src", "public/icons/Sun.svg");
+
+    themeChangeElements.forEach((element) => {
+      element.classList.remove("dark");
+    });
+    document.documentElement.style.setProperty("background-color", "#E6E6E6");
+  };
+
   themeChange.onclick = () => {
     var src = themeChange.getAttribute("src");
+
     if (src === "public/icons/Sun.svg") {
-      themeChange.setAttribute("src", "public/icons/Moon.svg");
-      themeChangeElements.forEach(element => {
-        element.classList.add('dark');
-      });
-
-      document.documentElement.style.setProperty('background-color', '#191919');
+      toDark();
+      localStorage.setItem("theme", "dark");
     } else {
-      themeChange.setAttribute("src", "public/icons/Sun.svg");
-      themeChangeElements.forEach((element) => {
-        element.classList.remove("dark");
-      });
-
-      document.documentElement.style.setProperty('background-color', '#E6E6E6');
-
+      toLight();
+      localStorage.setItem("theme", "light");
     }
   };
 }
+
 // fetch('http://www.omdbapi.com/?i=tt3896198&apikey=609f836a')
 //     .then((responce) => responce.json())
 //     .then((movies) => console.log(movies))

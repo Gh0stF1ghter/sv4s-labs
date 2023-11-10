@@ -10,9 +10,8 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" type="text/css" href="style.css" />
-  <script type="module" src="index.js"></script>
   <title>Movie tracker</title>
-  <script src="./script.js"></script>
+  <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -28,7 +27,7 @@
       </div>
       <div>
         <img
-          class="theme_button"
+          id="theme_button"
           src="public/icons/Sun.svg"
           alt="theme"
           height="20"
@@ -58,7 +57,7 @@
     <a
       class="Link"
       href="https://github.com/Gh0stF1ghter/SV4S-labs/tree/lab_1-2"
-      ><img src="public/icons/github.svg" alt="Github" />Github Repo</a
+      ><img id="svg" src="public/icons/github.svg" alt="Github" />Github Repo</a
     >
   </footer>
 </body>

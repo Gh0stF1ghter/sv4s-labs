@@ -128,6 +128,23 @@ a {
     background-color: #A5A5A5;
 }
 
+/* .lang {
+    height: 1.3em;
+    width: 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: all 0.3s ease-in-out;
+    background-color: #CECECE;
+    border-radius: 2em;
+}
+
+.lang:hover {
+    height: 4em;
+    box-shadow: 0 3px 13px 0px black;
+    width: 2em;
+} */
+
 .dark {
     background-color: #222;
     color: #fff;
