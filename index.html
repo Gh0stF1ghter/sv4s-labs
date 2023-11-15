@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Movie tracker</title>
   <script src="./script.js" defer></script>
@@ -26,16 +24,10 @@
         <span>OMDB API</span>
       </div>
       <div>
-        <img
-          id="theme_button"
-          src="public/icons/Sun.svg"
-          alt="theme"
-          height="20"
-          onclick="themeChange()"
-        />
+        <img id="theme_button" src="public/icons/Sun.svg" alt="theme" height="20" onclick="themeChange()" />
         <div class="line"></div>
-        <div class="lang">
-          <img src="public/icons/US-flag.svg" alt="lang" height="20" />
+        <div>
+          <img id="lang_button" onclick="Translate()" data-i18n="en" src="public/icons/US-flag.svg" alt="lang" height="20" />
         </div>
       </div>
     </div>
@@ -54,10 +46,9 @@
   <footer>
     <span>2023</span>
     <br />
-    <a
-      class="Link"
-      href="https://github.com/Gh0stF1ghter/SV4S-labs/tree/lab_1-2"
-      ><img id="svg" src="public/icons/github.svg" alt="Github" />Github Repo</a
-    >
+    <a class="Link" href="https://github.com/Gh0stF1ghter/SV4S-labs/tree/lab_1-2">
+      <img id="svg" src="public/icons/github.svg" alt="Github" />
+      <span data-i18n="Github">Github Repo</span>
+    </a>
   </footer>
 </body>

@@ -4,7 +4,58 @@ const POSTER_API_URL = "http://img.omdbapi.com/?";
 
 const SEARCH_URL = API_URL + API_SECRET_KEY + "&s=";
 
+
 themeChange()
+switchLanguage()
+
+function switchLanguage() {
+  const langChange = document.getElementById("lang_button");
+
+  function Translate(lang) {
+
+    const i18nDictionary = {
+      'en': {
+        'Github': 'Github Repo'
+      },
+      'ru': {
+        'Github': 'Репозиторий'
+      }
+    }
+  
+    const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+  
+    if (lang != null)
+      elementsToTranslate.forEach(element => {
+        element.textContent = i18nDictionary[lang][element.dataset.i18n]
+      });
+      langChange.setAttribute('src', `public/icons/${lang}-flag.svg`);
+
+    localStorage.setItem('lang', lang);
+  }
+  
+
+  let lang = localStorage.getItem('lang');
+
+  if (lang == null)
+    lang = 'en';
+
+  langChange.setAttribute('data-i18n', lang);
+
+  Translate(lang);
+
+  langChange.onclick = () => {
+    let lang = langChange.getAttribute("data-i18n");
+
+    if (lang === 'en') {
+      langChange.setAttribute('data-i18n', 'ru');
+      lang = 'ru'
+    } else {
+      langChange.setAttribute('data-i18n', 'en');
+      lang = 'en'
+    }
+        Translate(lang);
+  }
+}
 
 function themeChange() {
   const themeChange = document.getElementById("theme_button");
@@ -16,7 +67,7 @@ function themeChange() {
   var src = themeChange.getAttribute("src");
 
   var toDark = () => {
-    themeChange.setAttribute("src", "public/icons/Moon.svg");
+    themeChange.setAttribute('src', "public/icons/Moon.svg");
     themeChangeElements.forEach((element) => {
       element.classList.add("dark");
     });
@@ -26,7 +77,7 @@ function themeChange() {
 
   if (localStorage.getItem("theme") === "dark") toDark();
 
-  var toLight = () => {    
+  var toLight = () => {
     themeChange.setAttribute("src", "public/icons/Sun.svg");
 
     themeChangeElements.forEach((element) => {
