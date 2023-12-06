@@ -19,6 +19,29 @@ async function getResultsBySearch(searchInput) {
     return new Response('Failed to fetch data', {status: 500})
   }
 }
+// function showMovies(data) {
+//   main.innerHTML = '';    
+//   console.log(Object.keys(data));
+//   data.forEach(movie => {
+//   // Object.keys(data).forEach(movie => {
+//     const {title, poster_path, vote_average, overview, id} = movie;
+//       const movieEl = document.createElement('div');
+//       movieEl.classList.add('movie');
+//       movieEl.innerHTML = `
+//       <span class="rate">${vote_average}</span>
+//       <img src="${IMAGE_URL+poster_path}" alt="${title}">
+//       <div class="main-information">
+//           <h3>${title}</h3>
+//       </div>
+//       <div class="description">
+//           <h3>Description</h3>
+//           ${overview}
+//       </div>
+      
+//       `
+//       main.appendChild(movieEl);
+//   })
+// }
 
 search.addEventListener('change', async e => {
   var searchInput = e.target.value.trim()
@@ -35,13 +58,13 @@ async function showResults(response) {
   const results = await response.json()
 
   if (response.status == 500) {
-    var notConnected = document.createElement('h1')
+    const notConnected = document.createElement('h1')
     notConnected.textContent = 'Connection has been lost'
     return;
   }
-  else if (!results.Response) {
+  else if (results.Response === "False") {
     console.log("Not found CAUGHT")
-    var notFound = document.createElement('h1')
+    var notFound = document.createElement('div')
     notFound.textContent = 'No results during the search'
     return;
   }
