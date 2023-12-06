@@ -4,6 +4,51 @@ const POSTER_API_URL = "http://img.omdbapi.com/?";
 
 const SEARCH_URL = API_URL + API_SECRET_KEY + "&s=";
 
+const search = document.getElementById('search')
+const catalog = document.getElementById('catalog')
+
+async function getResultsBySearch(searchInput) {
+  try {
+    const response = await fetch(SEARCH_URL + searchInput)
+
+    console.log(response.status)
+    return response;
+  }
+  catch (error) {
+    console.log(error)
+    return new Response('Failed to fetch data', {status: 500})
+  }
+}
+
+search.addEventListener('change', async e => {
+  var searchInput = e.target.value.trim()
+  if (searchInput) {
+    const results = await getResultsBySearch(searchInput)
+    await showResults(results)
+    search.value = searchInput
+  }
+})
+
+async function showResults(response) {
+  catalog.innerHTML = ''
+
+  const results = await response.json()
+
+  if (response.status == 500) {
+    var notConnected = document.createElement('h1')
+    notConnected.textContent = 'Connection has been lost'
+    return;
+  }
+  else if (!results.Response) {
+    console.log("Not found CAUGHT")
+    var notFound = document.createElement('h1')
+    notFound.textContent = 'No results during the search'
+    return;
+  }
+
+  console.log(results)
+  
+}
 
 themeChange()
 switchLanguage()
@@ -21,18 +66,18 @@ function switchLanguage() {
         'Github': 'Репозиторий'
       }
     }
-  
+
     const elementsToTranslate = document.querySelectorAll('[data-i18n]');
-  
+
     if (lang != null)
       elementsToTranslate.forEach(element => {
         element.textContent = i18nDictionary[lang][element.dataset.i18n]
       });
-      langChange.setAttribute('src', `public/icons/${lang}-flag.svg`);
+    langChange.setAttribute('src', `public/icons/${lang}-flag.svg`);
 
     localStorage.setItem('lang', lang);
   }
-  
+
 
   let lang = localStorage.getItem('lang');
 
@@ -53,7 +98,7 @@ function switchLanguage() {
       langChange.setAttribute('data-i18n', 'en');
       lang = 'en'
     }
-        Translate(lang);
+    Translate(lang);
   }
 }
 
