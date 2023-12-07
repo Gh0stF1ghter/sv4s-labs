@@ -25,9 +25,12 @@
         <span>OMDB API</span>
       </div>
       <div>
-        <img id="theme_button" src="public/icons/Sun.svg" alt="theme" height="20" onclick="themeChange()" />
+        <div >
+                  <img class="switch" id="theme_button" src="public/icons/Sun.svg" alt="theme" height="20" onclick="themeChange()" />
+
+        </div>
         <div class="line"></div>
-        <div>
+        <div class="switch">
           <img id="lang_button" onclick="Translate()" data-i18n="en" src="public/icons/US-flag.svg" alt="lang" height="20" />
         </div>
       </div>
@@ -42,7 +45,9 @@
         No video
       </video>
     </div>
-    <div class="movie_container" id="catalog"></div>
+    <div class="movie_container" id="catalog">
+      <div class="movie_card"></div>
+    </div>
   </main>
 
   <footer>
