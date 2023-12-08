@@ -43,10 +43,16 @@ async function showResults(data) {
     let movieCard = document.createElement("div");
     movieCard.classList.add("movie_card");
 
+    let moviePoster = fullData.Poster;
+    if(moviePoster == "N/A")
+    {
+      moviePoster = '/public/media/not_found.jpg'      
+    }
+    
     movieCard.innerHTML = `
       <div class="movie_cover">
       <span class="rating">${fullData.imdbRating}</span>
-      <img class="movie_cover" src="${fullData.Poster}" />
+      <img class="movie_cover" src="${moviePoster}" />
     </div>
     <span class="description"> ${fullData.Plot} </span>
     `;
