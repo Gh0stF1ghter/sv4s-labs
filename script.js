@@ -44,11 +44,10 @@ async function showResults(data) {
     movieCard.classList.add("movie_card");
 
     let moviePoster = fullData.Poster;
-    if(moviePoster == "N/A")
-    {
-      moviePoster = '/public/media/not_found.jpg'      
+    if (moviePoster == "N/A") {
+      moviePoster = '/public/media/not_found.jpg'
     }
-    
+
     movieCard.innerHTML = `
       <div class="movie_cover">
       <span class="rating">${fullData.imdbRating}</span>
@@ -62,8 +61,27 @@ async function showResults(data) {
   console.log(results);
 }
 
+function ClearSearch() {
+  search.value = ''
+  search.focus()
+}
+
 themeChange();
 switchLanguage();
+
+const playButton = document.getElementById('play_btn')
+const video = document.getElementById('video_exmpl')
+function Play() {
+  if (video.paused) {
+    video.play()
+    playButton.textContent = 'pause';
+  }
+  else {
+    video.pause()
+    playButton.textContent = 'play';
+  }
+
+}
 
 function switchLanguage() {
   const langChange = document.getElementById("lang_button");
@@ -71,9 +89,11 @@ function switchLanguage() {
   function Translate(lang) {
     const i18nDictionary = {
       en: {
+        start: "Just start typing",
         Github: "Github Repo",
       },
       ru: {
+        start: "Просто начните искать",
         Github: "Репозиторий",
       },
     };

@@ -38,8 +38,9 @@ main div {
 .video_container {
   background-color: #cecece;
   border-radius: 2em;
-  height: 30vh;
+  height: fit-content;
   width: 66vw;
+  flex-direction: column;
 }
 
 .video_container video {
@@ -97,6 +98,25 @@ footer {
   color: transparent;
 }
 
+.search:hover #clear_btn {
+  color: #000;
+}
+
+#clear_btn {
+  width: fit-content;
+  color: transparent;
+}
+
+#play_btn {
+  width: fit-content;
+  color: #000;
+  height: 2vh;
+  margin: 1%;
+  background: white;
+  padding: 1%;
+  border-radius: 15px;
+}
+
 .Link {
   width: 20px;
   height: 20px;
@@ -136,12 +156,8 @@ a {
 
 .switch {
   cursor: pointer;
-  transition: ease-in-out all 0.3s;
 }
 
-.switch:hover {
-  background-color: #a5a5a5;
-}
 
 /* .lang {
     height: 1.3em;
