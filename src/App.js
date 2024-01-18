@@ -7,7 +7,6 @@ import MovieCard from "./components/MovieCard/MovieCard";
 
 const API_SECRET_KEY = "apikey=609f836a";
 const API_URL = "https://www.omdbapi.com/?";
-const POSTER_API_URL = "http://img.omdbapi.com/?";
 
 const SEARCH_URL = API_URL + API_SECRET_KEY + "&s=";
 const FULL_DATA_URL = API_URL + API_SECRET_KEY + "&i=";
@@ -24,14 +23,10 @@ function App() {
     if (searchResults) {
       let fullResult = [];
       for (let i = 0; i < searchResults.length; i++) {
-        let fullData = await fetch(FULL_DATA_URL + searchResults[i].imdbID).then(
-          (response) => response.json()
-        );
+        let fullData = await fetch(
+          FULL_DATA_URL + searchResults[i].imdbID
+        ).then((response) => response.json());
 
-        let moviePoster = fullData.Poster;
-        if (moviePoster === "N/A") {
-          moviePoster = "media/not_found.jpg";
-        }
         fullResult[i] = fullData;
       }
 
