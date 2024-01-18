@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Search({handleSearch}) {
   const search = document.getElementById("search")
@@ -12,10 +12,10 @@ const [searchValue, setSearchValue] = useState('')
         type="text"
         placeholder="search"
         value={searchValue}
-        onChange={(e) => {
-          e.preventDefault();
-          setSearchValue(e.target.value)
-          handleSearch(searchValue);
+        onChange={e => {
+          var searchInput = e.target.value.trim();
+          handleSearch(searchInput);
+          setSearchValue(searchInput)
         }}
         autoComplete="off"
       />

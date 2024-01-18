@@ -1,8 +1,19 @@
 import React from 'react'
 
-const MovieCard = () => {
+const MovieCard = ({data}) => {
+
+  if (data.Poster === "N/A") {
+    data.Poster = "media/not_found.jpg"
+  }
+
   return (
-    <div>MovieCard</div>
+  <div className='movie_card'>
+    <div class="movie_cover">
+      <span class="rating">{data.imdbRating}</span>
+      <img class="movie_cover" src={data.Poster} alt='poster'/>
+    </div>
+    <span class="description"> {data.Plot} </span>
+    </div>
   )
 }
 
