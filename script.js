@@ -138,15 +138,12 @@ function themeChange() {
     ".theme_button, .video_container, .movie_container, footer, a, .navbar, .lang"
   );
 
-  var src = themeChange.getAttribute("src");
-
   var toDark = () => {
     themeChange.setAttribute("src", "public/icons/Moon.svg");
     themeChangeElements.forEach((element) => {
       element.classList.add("dark");
     });
     document.documentElement.style.setProperty("background-color", "#191919");
-    document.getElementById("svg").style.setProperty("fill", "#fff");
   };
 
   if (localStorage.getItem("theme") === "dark") toDark();
