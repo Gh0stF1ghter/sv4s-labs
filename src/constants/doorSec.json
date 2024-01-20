@@ -1,0 +1,30 @@
+[
+    {
+        "manufacturer": "August Home",
+        "name":"AUG-SL05-M01-S01",
+        "type": "door lock",
+        "accessType": "Wi-Fi",
+        "power": "2 CR123A batteries"
+    },
+    {
+        "manufacturer": "Yale",
+        "name":"YRD420-ZW2-619",
+        "type": "door lock",
+        "accessType": "Touch",
+        "power": "4 AA batteries"
+    },
+    {
+        "manufacturer": "SCHLAGE",
+        "name":"BE375CEN716",
+        "type": "door lock",
+        "accessType": "Keypad",
+        "power": "2 CR123A batteries"
+    },
+    {
+        "manufacturer": "eufy",
+        "name":"T8530",
+        "type": "door lock",
+        "accessType": "Voice",
+        "power": "10000 mAh Rechargeable"
+    }
+]

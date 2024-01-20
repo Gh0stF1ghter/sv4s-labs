@@ -1,0 +1,63 @@
+[
+  {
+    "name": "DS-T200(B)",
+    "manufacturer":"HiWatch",
+    "design": "Standard",
+    "use": "Outdoor",
+    "focusDistance": "2.6 mm", 
+    "lighting": true,
+    "lightingType": "IR",
+    "viewAngle": 87
+  },
+  {
+    "name": "DS-2CE57D3T-VPITF",
+    "manufacturer":"Hikvision",
+    "design": "Dome",
+    "use": "Outdoor",
+    "focusDistance": "2.8 mm", 
+    "lighting": true,
+    "lightingType": "IR",
+    "viewAngle": 106
+  },
+  {
+    "name": "DS-T101",
+    "manufacturer":"HiWatch",
+    "design": "Dome",
+    "use": "Indoor",
+    "focusDistance": "2.8 mm", 
+    "lighting": true,
+    "lightingType": "IR",
+    "viewAngle": 92
+  },
+  {
+    "name": "FE-MHD-BP2e-20",
+    "manufacturer":"FalconEye",
+    "design": "Standard",
+    "use": "Outdoor",
+    "focusDistance": "3.6 mm", 
+    "lighting": true,
+    "lightingType": "IR",
+    "viewAngle": 82
+
+  },
+  {
+    "name": "HDD361A SE",
+    "manufacturer":"CTV",
+    "design": "Dome",
+    "use": "Indoor",
+    "focusDistance": "3.6 mm", 
+    "lighting": true,
+    "lightingType": "IR",
+    "viewAngle": 87
+  },
+  {
+    "name": "DS-2CE19H8T-AIT3ZF",
+    "manufacturer":"Hikvision",
+    "design": "Standard",
+    "use": "Outdoor",
+    "focusDistance": "2.6 - 13.5 mm", 
+    "lighting": true,
+    "lightingType": "IR",
+    "viewAngle": 92.3
+  }
+]

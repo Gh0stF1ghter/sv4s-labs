@@ -1,0 +1,26 @@
+[
+  {
+    "manufacturer": "butterflymx",
+    "name": "12\" recessed",
+    "type": "intercom system",
+    "camera": true,
+    "features": "Motion detection",
+    "access": "RFID"
+  },
+  {
+    "manufacturer": "2N",
+    "name": "IP STYLE",
+    "type": "intercom system",
+    "camera": true,
+    "features": "adaptive face zoom",
+    "access": "Wavekey system"
+  },
+  {
+    "manufacturer": "DOORBIRD",
+    "name": "D1101V",
+    "type": "intercom system",
+    "camera": true,
+    "features": "night vision",
+    "access": "keypanel"
+  }
+]
