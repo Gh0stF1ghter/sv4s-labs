@@ -12,7 +12,9 @@ nav {
 .logo_img {
   object-fit: contain;
 }
-
+.profile_img {
+  border-radius: 9999px;
+}
 .logo_text {
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;
@@ -39,6 +41,12 @@ nav {
   gap: 0.5rem /* 8px */;
   justify-content: flex-end;
   align-items: flex-end;
+
+  --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .dropdown_link {
@@ -54,8 +62,38 @@ nav {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
+.flex {
+  display: flex;
+}
+
+.big_screen {
+  display: none;
+}
+
+.small_screen {
+  position: relative;
+  display: flex;
+}
+
+.profile_btns {
+  display: flex;
+  gap: 0.75rem /* 12px */;
+}
+
+@media (min-width: 768px) {
+  .profile_btns {
+    gap: 1.25rem /* 20px */;
+  }
+}
+
 @media not all and (min-width: 640px) {
+  .big_screen {
+    display: flex;
+  }
   .logo_text {
+    display: none;
+  }
+  .small_screen {
     display: none;
   }
 }

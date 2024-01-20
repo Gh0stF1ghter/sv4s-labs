@@ -34,15 +34,15 @@ function Nav() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden sm:flex">
+        <div className="big_screen">
           {session?.user ? (
-            <div className="flex gap-3 md:gap-5">
+            <div className="profile_btns flex gap-3 md:gap-5">
               <button type="button" onClick={()=> {}} className="outline_btn">
                 Sign out
               </button>
 
               <img
-                className="rounded-full"
+                className="profile_img"
                 src="profile.svg"
                 alt="profile"
                 width={37}
@@ -59,11 +59,11 @@ function Nav() {
         </div>
 
         {/* Mobile */}
-        <div className="relative flex sm:hidden">
+        <div className="small_screen">
           {session?.user ? (
             <div className="flex">
               <img
-                className="rounded-full"
+                className="profile_img"
                 src="profile.svg"
                 width={37}
                 height={37}
@@ -96,7 +96,7 @@ function Nav() {
                       setToggleDropdown(false);
                       
                     }}
-                    className="w-full mt-5 black_btn"
+                    className="dropdown_link black_btn"
                   >
                     Sign Out
                   </button>
