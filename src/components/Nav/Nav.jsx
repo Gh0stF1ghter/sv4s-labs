@@ -71,7 +71,7 @@ function Nav() {
       {/* Desktop Navigation */}
       <div className="big_screen">
         {session ? (
-          <div className="flex gap-3 md:gap-5">
+          <div className="user_menu">
             <button
               type="button"
               onClick={() => {
@@ -94,10 +94,10 @@ function Nav() {
             />
             {/* Dropdown Menu */}
             {toggleDropdown && (
-              <div className="dropdown drop-shadow-md">
-                <div className="m-3 ">
+              <div className="dropdown">
+                <div className="profile_img">
                   <img
-                    className="profile_img"
+                    className="profile_img_large"
                     src="profile.svg"
                     width={50}
                     height={50}
@@ -105,12 +105,12 @@ function Nav() {
                   />
                 </div>
 
-                <div className="text-center">Hello, {user.name}!</div>
+                <div className="user_name">Hello, {user.name}!</div>
               </div>
             )}
           </div>
         ) : (
-          <div className="flex">
+          <div className="sign_in_button">
             <button
               type="button"
               onClick={() => setOpenForm((prev) => !prev)}
@@ -119,9 +119,9 @@ function Nav() {
               Sign In
             </button>
             {openForm && (
-              <div className="dropdown drop-shadow-md">
+              <div className="dropdown">
                 {error && (
-                  <div className="w-full text-red-600 bg-red-400 rounded-lg">
+                  <div className="error_block">
                     No such user in base
                   </div>
                 )}
@@ -139,7 +139,7 @@ function Nav() {
       {/* Mobile */}
       <div className="small_screen">
         {session ? (
-          <div className="flex">
+          <div className="sign_in_button">
             <img
               className="profile_img"
               src="profile.svg"
@@ -151,10 +151,10 @@ function Nav() {
 
             {/* Dropdown Menu */}
             {toggleDropdown && (
-              <div className="items-center dropdown drop-shadow-md">
+              <div className="dropdown drop-shadow-md">
                 <div className="m-3">
                   <img
-                    className="profile_img"
+                    className="profile_img_large"
                     src="profile.svg"
                     width={50}
                     height={50}
@@ -162,7 +162,7 @@ function Nav() {
                   />
                 </div>
 
-                <div className="text-center">Hello, {user.name}!</div>
+                <div className="user_name">Hello, {user.name}!</div>
 
                 <button
                   type="button"
@@ -186,9 +186,9 @@ function Nav() {
               Sign In
             </button>
             {openForm && (
-              <div className="dropdown drop-shadow-md">
+              <div className="dropdown">
                 {error && (
-                  <div className="w-full text-red-600 bg-red-400 rounded-lg">
+                  <div className="error_block">
                     No such user in base
                   </div>
                 )}

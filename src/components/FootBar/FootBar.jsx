@@ -1,13 +1,15 @@
+import './footBar.css'
+
 import React from "react";
 
-import { footerLinks } from "../constants";
+import { footerLinks } from "../../constants";
 import { Link } from "react-router-dom";
 
 const FootBar = () => {
   return (
-    <footer className="flex flex-col mt-5 border-t border-gray-100 text-black-100">
-      <div className="flex flex-wrap justify-between gap-5 px-6 py-10 max-md:flex-col sm:px-6">
-        <div className="flex flex-col items-start justify-start gap-6 ">
+    <footer>
+      <div className="inner_footer">
+        <div className="footer_logo">
           <Link to="/" className="logo flex-center">
             <img
               src="./logo.svg"
@@ -20,9 +22,9 @@ const FootBar = () => {
           </Link>
         </div>
 
-        <div className="flex flex-wrap flex-1 w-full gap-20 md:justify-end max-md:mt-10">
+        <div className="footer_about">
           {footerLinks.map((link) => (
-            <div className="flex flex-col gap-6 text-base min-w-[170px]">
+            <div className="about_block">
               <h3 className="font-bold ">{link.title}</h3>
               {link.links.map((item) => (
                 <Link
@@ -38,9 +40,9 @@ const FootBar = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between px-6 py-10 mt-10 border-t border-gray-100 sm:px-16">
+      <div className="copyright">
         <p>2023 All Rights reserved</p>
-        <div className="flex justify-center flex-1 gap-10 sm:justify-end max-sm:mt-4">
+        <div className="terms_of_use">
           <Link to="/" className="text-gray-500 ">
             Terms of use
           </Link>

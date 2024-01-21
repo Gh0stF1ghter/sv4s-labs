@@ -7,9 +7,9 @@ function Card({ value }) {
   const manufacturer = value.manufacturer;
   return (
     <>
-      <div className="p-4 glassmorphism" onClick={() => setOpenDetes(true)}>
-        <p className="max-w-md text-left desc">{name}</p>
-        <p className="max-w-md text-left desc">{manufacturer}</p>
+      <div className="card glassmorphism" onClick={() => setOpenDetes(true)}>
+        <p className="main_detes desc">{name}</p>
+        <p className="main_detes desc">{manufacturer}</p>
       </div>
       {openDetes && <CardDetails value={value} setIsOpen={setOpenDetes} />}
     </>

@@ -15,3 +15,14 @@
     var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
     var(--tw-backdrop-sepia);
 }
+
+.card {
+  padding: 1rem/* 16px */;
+
+}
+
+.main_detes {
+  max-width: 28rem/* 448px */;
+  text-align: left;
+
+}

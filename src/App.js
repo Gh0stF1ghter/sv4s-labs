@@ -6,7 +6,7 @@ import Cameras from "./pages/Cameras";
 import Doors from "./pages/Doors";
 import Entrance from "./pages/Entrance";
 import NoPage from "./pages/NoPage";
-import FootBar from "./components/FootBar";
+import FootBar from "./components/FootBar/FootBar";
 
 function App() {
   return (

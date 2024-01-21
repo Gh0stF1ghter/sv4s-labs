@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import Card from "./Card/Card";
+import './cardList.css'
+
+import React from "react";
+import Card from "../Card/Card";
 
 function CardList({ list }) {
   const values = list

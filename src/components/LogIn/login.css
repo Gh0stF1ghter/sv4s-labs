@@ -25,3 +25,17 @@
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
+
+.login {
+  padding-bottom: 0.5rem/* 8px */;
+  text-align: center;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit_btn {
+  margin-top: 0.5rem/* 8px */;
+}

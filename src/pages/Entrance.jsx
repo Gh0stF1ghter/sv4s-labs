@@ -1,6 +1,6 @@
 import React from "react";
 import entrance from "../constants/entranceSec.json";
-import CardList from "../components/CardList";
+import CardList from "../components/CardList/CardList";
 
 function Entrance() {
   return (

@@ -4,15 +4,15 @@ import "./login.css";
 function LogIn({ user, setUser, logging, handleSubmit }) {
   return (
     <div>
-      <div className="pb-2 text-center">Log In</div>
-      <form onSubmit={handleSubmit} className="flex flex-col ">
+      <div className="login">Log In</div>
+      <form onSubmit={handleSubmit} className="login_form">
         <input
           onChange={(e) => setUser({ ...user, email: e.target.value })}
           type="email"
           placeholder="email"
           required
           autoComplete='on'
-          className="form_input "
+          className="form_input"
         />
 
         <input
@@ -24,7 +24,7 @@ function LogIn({ user, setUser, logging, handleSubmit }) {
           className="form_input"
         />
 
-        <button type="submit" disabled={logging} className="mt-2 black_btn">
+        <button type="submit" disabled={logging} className="submit_btn black_btn">
           {logging ? "Signing in" : "Sign in"}
         </button>
       </form>
