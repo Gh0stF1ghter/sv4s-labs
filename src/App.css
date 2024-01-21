@@ -60,6 +60,16 @@
   opacity: 0.15;
 }
 
+.orange_gradient {
+  color: transparent;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #f59e0b var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(245 158 11 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #ea580c var(--tw-gradient-to-position);
+  background-clip: text;
+}
+
 .flex-between {
   display: flex;
   align-items: center;
@@ -68,7 +78,7 @@
 
 .flex-center {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 
