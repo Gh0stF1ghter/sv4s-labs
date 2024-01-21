@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Cameras from "./pages/Cameras";
 import Doors from "./pages/Doors";
 import Entrance from "./pages/Entrance";
+import NoPage from "./pages/NoPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/cctv" element={<Cameras />} />
             <Route path="/doorSec" element={<Doors />} />
             <Route path="/entranceSec" element={<Entrance />} />
+            <Route path="*" element={<NoPage/>} />
           </Routes>
         </BrowserRouter>
       </main>
