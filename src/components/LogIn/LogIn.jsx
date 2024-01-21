@@ -1,32 +1,43 @@
 import React from "react";
 import "./login.css";
+import Button from "@mui/material-next/Button";
+import TextField from "@mui/material/TextField";
 
 function LogIn({ user, setUser, logging, handleSubmit }) {
   return (
     <div>
       <div className="pb-2 text-center">Log In</div>
-      <form onSubmit={handleSubmit} className="flex flex-col ">
-        <input
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+        <TextField
+          label="Email"
+          variant="outlined"
           onChange={(e) => setUser({ ...user, email: e.target.value })}
           type="email"
           placeholder="email"
           required
-          autoComplete='on'
+          autoComplete="on"
           className="form_input "
         />
 
-        <input
+        <TextField
+          label="Password"
+          variant="outlined"
           onChange={(e) => setUser({ ...user, password: e.target.value })}
           type="password"
           placeholder="password"
           required
-          autoComplete='on'
+          autoComplete="on"
           className="form_input"
         />
 
-        <button type="submit" disabled={logging} className="mt-2 black_btn">
+        <Button
+          variant="outlined"
+          type="submit"
+          disabled={logging}
+          className="mt-2 black_btn"
+        >
           {logging ? "Signing in" : "Sign in"}
-        </button>
+        </Button>
       </form>
     </div>
   );

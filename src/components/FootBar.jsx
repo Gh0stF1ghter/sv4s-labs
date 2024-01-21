@@ -22,7 +22,7 @@ const FootBar = () => {
 
         <div className="flex flex-wrap flex-1 w-full gap-20 md:justify-end max-md:mt-10">
           {footerLinks.map((link) => (
-            <div className="flex flex-col gap-6 text-base min-w-[170px]">
+            <div key={link.title} className="flex flex-col gap-6 text-base min-w-[170px]">
               <h3 className="font-bold ">{link.title}</h3>
               {link.links.map((item) => (
                 <Link
