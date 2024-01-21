@@ -1,0 +1,15 @@
+.link {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    padding-left: 0.75rem/* 12px */;
+    padding-right: 0.75rem/* 12px */;
+    padding-bottom: 0.2rem;
+    border-bottom-width: 2px;
+    border-color: transparent;
+}
+
+.link:hover {
+    --tw-border-opacity: 1;
+    border-color: rgb(44 169 188 / var(--tw-border-opacity));
+}

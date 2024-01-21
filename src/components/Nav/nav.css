@@ -40,7 +40,7 @@ nav {
   flex-direction: column;
   gap: 0.5rem /* 8px */;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
 
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
     drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
@@ -67,12 +67,12 @@ nav {
 }
 
 .big_screen {
-  display: none;
+  position: relative;
+  display: flex;
 }
 
 .small_screen {
-  position: relative;
-  display: flex;
+  display: none;
 }
 
 .profile_btns {
@@ -80,20 +80,15 @@ nav {
   gap: 0.75rem /* 12px */;
 }
 
-@media (min-width: 768px) {
-  .profile_btns {
-    gap: 1.25rem /* 20px */;
-  }
-}
-
-@media not all and (min-width: 640px) {
+@media not all and (min-width: 800px) {
   .big_screen {
-    display: flex;
+    display: none;
   }
   .logo_text {
     display: none;
   }
   .small_screen {
-    display: none;
+    position: relative;
+    display: flex;
   }
 }
