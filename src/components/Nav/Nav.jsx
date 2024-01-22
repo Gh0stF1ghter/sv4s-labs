@@ -11,20 +11,43 @@ import Tooltip from "@mui/material/Tooltip";
 import Alert from "@mui/material/Alert";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Box from "@mui/material/Box";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleDropdown, removeDropdown } from "./dropdownSlice";
+import { toggleSmallDropdown, removeSmallDropdown } from "./smallDropdownSlice";
+import {
+  setName,
+  setEmail,
+  setPassword,
+  open,
+  close,
+  openSmall,
+  closeSmall,
+  startSession,
+  endSession,
+} from "./loginSlice";
 
 function Nav() {
-  const [toggleDropdown, setToggleDropdown] = useState(false);
-  const [smallToggleDropdown, setSmallToggleDropdown] = useState(false)
-  const [session, setSession] = useState(false);
+  const dropdown = useSelector((state) => state.dropdown.value);
+  const smallDropdown = useSelector((state) => state.smallDropdown.value);
+  const form = useSelector((state) => state.login.value.opened);
+  const smallForm = useSelector((state) => state.login.value.openedSmall);
+  const session = useSelector((state) => state.login.value.session);
+
+  const user = useSelector((state) => state.login.value);
+
+  const dispatch = useDispatch();
+
   const [logging, setLogging] = useState(false);
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
   const [error, setError] = useState(false);
-  const [openForm, setOpenForm] = useState(false);
-  const [openSmallForm, setOpenSmallForm] = useState(false);
+
+  const signOut = () => {
+    dispatch(endSession());
+    dispatch(setEmail(""));
+    dispatch(setName(""));
+    dispatch(setPassword(""));
+    localStorage.removeItem("currentUser");
+    setLogging(false)
+  };
 
   const handleLogIn = async (e) => {
     e.preventDefault();
@@ -42,8 +65,8 @@ function Nav() {
       localStorage.setItem("currentUser", user.email);
       localStorage.setItem("userName", exists.name);
       localStorage.setItem("userPass", user.password);
-      setUser({ ...user, name: exists.name });
-      setSession(true);
+      dispatch(setName(exists.name));
+      dispatch(startSession());
     } else {
       setLogging(false);
       setError(true);
@@ -56,8 +79,10 @@ function Nav() {
       if (user) {
         const name = localStorage.getItem("userName");
         const pass = localStorage.getItem("userPass");
-        setUser({ name: name, email: user, password: pass });
-        setSession(true);
+        dispatch(setEmail(user));
+        dispatch(setName(name));
+        dispatch(setPassword(pass));
+        dispatch(startSession());
       }
     };
     getUser();
@@ -81,6 +106,8 @@ function Nav() {
       <NavButton href={`/cctv`} name={"Cameras"} />
       <NavButton href={`/entranceSec`} name={"Entrance Security"} />
       <NavButton href={`/doorSec`} name={"Door Security"} />
+      {"Simple dropdown " + JSON.stringify(dropdown)}
+      {"big form " + JSON.stringify(form)}
 
       {/* Desktop Navigation */}
       <div className="big_screen">
@@ -89,17 +116,15 @@ function Nav() {
             <Button
               variant="outlined"
               onClick={() => {
-                setSession(false);
-                setUser({ name: "", email: "", password: "" });
-                localStorage.removeItem("currentUser");
+                signOut();
               }}
               className="outline_btn"
             >
               Sign out
             </Button>
-            <ClickAwayListener onClickAway={() => setToggleDropdown(false)}>
+            <ClickAwayListener onClickAway={() => dispatch(removeDropdown())}>
               <Box>
-                <IconButton onClick={() => setToggleDropdown((prev) => !prev)}>
+                <IconButton onClick={() => dispatch(toggleDropdown())}>
                   <Avatar
                     src="profile.svg"
                     alt="profile"
@@ -108,7 +133,7 @@ function Nav() {
                   />
                 </IconButton>
                 {/* Dropdown Menu */}
-                {toggleDropdown ? (
+                {dropdown ? (
                   <Box className="dropdown drop-shadow-md">
                     <div className="m-3 ">
                       <Avatar
@@ -125,29 +150,24 @@ function Nav() {
             </ClickAwayListener>
           </div>
         ) : (
-          <ClickAwayListener onClickAway={() => setOpenForm(false)}>
+          <ClickAwayListener onClickAway={() => dispatch(close())}>
             <Box sx={{ position: "flex" }}>
               <Button
                 variant="outlined"
                 type="button"
-                onClick={() => setOpenForm((prev) => !prev)}
+                onClick={() => dispatch(open())}
                 className="black_btn"
               >
                 Sign In
               </Button>
-              {openForm ? (
+              {form ? (
                 <Box className="dropdown drop-shadow-md">
                   {error && (
                     <Alert severity="error" className="w-full rounded-lg">
                       No such user in base
                     </Alert>
                   )}
-                  <LogIn
-                    user={user}
-                    setUser={setUser}
-                    logging={logging}
-                    handleSubmit={handleLogIn}
-                  />
+                  <LogIn logging={logging} handleSubmit={handleLogIn} />
                 </Box>
               ) : null}
             </Box>
@@ -157,9 +177,11 @@ function Nav() {
       {/* Mobile */}
       <div className="small_screen">
         {session ? (
-          <ClickAwayListener onClickAway={() => setSmallToggleDropdown(false)}>
+          <ClickAwayListener
+            onClickAway={() => dispatch(removeSmallDropdown())}
+          >
             <Box className="flex">
-              <IconButton onClick={() => setSmallToggleDropdown((prev) => !prev)}>
+              <IconButton onClick={() => dispatch(toggleSmallDropdown())}>
                 <Avatar
                   src="profile.svg"
                   width={37}
@@ -169,7 +191,7 @@ function Nav() {
               </IconButton>
 
               {/* Dropdown Menu */}
-              {smallToggleDropdown && (
+              {smallDropdown && (
                 <Box className="items-center dropdown drop-shadow-md">
                   <div className="m-3">
                     <Avatar
@@ -187,7 +209,8 @@ function Nav() {
                     variant="outlined"
                     type="button"
                     onClick={() => {
-                      setToggleDropdown(false);
+                      dispatch(removeSmallDropdown());
+                      signOut();
                     }}
                     className="black_btn"
                   >
@@ -198,29 +221,24 @@ function Nav() {
             </Box>
           </ClickAwayListener>
         ) : (
-          <ClickAwayListener onClickAway={() => setOpenSmallForm(false)}>
+          <ClickAwayListener onClickAway={() => dispatch(closeSmall())}>
             <Box>
               <Button
                 variant="outlined"
                 type="button"
-                onClick={() => setOpenSmallForm((prev) => !prev)}
+                onClick={() => dispatch(openSmall())}
                 className="black_btn"
               >
                 Sign In
               </Button>
-              {openSmallForm && (
+              {smallForm && (
                 <Box className="dropdown drop-shadow-md">
                   {error && (
                     <div className="w-full text-red-600 bg-red-400 rounded-lg">
                       No such user in base
                     </div>
                   )}
-                  <LogIn
-                    user={user}
-                    setUser={setUser}
-                    logging={logging}
-                    handleSubmit={handleLogIn}
-                  />
+                  <LogIn logging={logging} handleSubmit={handleLogIn} />
                 </Box>
               )}
             </Box>

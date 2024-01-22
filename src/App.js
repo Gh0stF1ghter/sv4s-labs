@@ -7,6 +7,8 @@ import Doors from "./pages/Doors";
 import Entrance from "./pages/Entrance";
 import NoPage from "./pages/NoPage";
 import FootBar from "./components/FootBar";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
@@ -16,17 +18,19 @@ function App() {
       </div>
 
       <main className="app">
-        <BrowserRouter>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cctv" element={<Cameras />} />
-            <Route path="/doorSec" element={<Doors />} />
-            <Route path="/entranceSec" element={<Entrance />} />
-            <Route path="*" element={<NoPage/>} />
-          </Routes>
-          <FootBar/>
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/cctv" element={<Cameras />} />
+              <Route path="/doorSec" element={<Doors />} />
+              <Route path="/entranceSec" element={<Entrance />} />
+              <Route path="*" element={<NoPage />} />
+            </Routes>
+            <FootBar />
+          </BrowserRouter>
+        </Provider>
       </main>
     </>
   );
