@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>СВЧ 3</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
+    <script>
+        const { Component } = React;
+        const { render } = ReactDOM;
+
+        const course = "Комплектующие";
+        const courses = [
+            { id: 1, name: "Видеокарта", year: "2020 год", cost: "от 2975 рублей" },
+            { id: 2, name: "Процессор", year: "2019 год", cost: "от 50 рублей" },
+            { id: 3, name: "ОЗУ", year: "2023 год", cost: "от 60 рублей" },
+            { id: 4, name: "Материнская плата", year: "2022 год", cost: "от 190 рублей" },
+        ]
+
+        class Table extends Component {
+            render() {
+                const rows = this.props.courses.map(course => {
+                    return (
+                        React.createElement(Row, { course: course })
+                    );
+                });
+
+                return (
+                    React.createElement("div", null,
+                        React.createElement("h2", null, this.props.course),
+                        React.createElement("table", { className: 'table' },
+                            React.createElement("thead", null,
+                                React.createElement("tr", null,
+                                    React.createElement("th", null, 'Название'),
+                                    React.createElement("th", null, 'Дата выхода на рынок'),
+                                    React.createElement("th", null, 'Цена'),
+                                )
+                            ),
+                            React.createElement("tbody", null, rows)
+                        )
+                    )
+                );
+            }
+        }
+
+        
+        Table.propTypes = {
+            course: PropTypes.string.isRequired,
+            courses: PropTypes.arrayOf(PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                name: PropTypes.string.isRequired,
+                year: PropTypes.string.isRequired,
+                cost: PropTypes.number.isRequired,
+            })).isRequired
+        };
+
+        class Row extends Component {
+            render() {
+                return (
+                    React.createElement("tr", { key: this.props.course.id },
+                        React.createElement("td", null, this.props.course.name),
+                        React.createElement("td", null, this.props.course.year),
+                        React.createElement("td", null, this.props.course.cost),
+                    )
+                );
+            }
+        }
+
+        render(React.createElement(Table, { course: course, courses: courses }), document.getElementById('root'));
+    </script>
+</body>
+</body>
+</html>
