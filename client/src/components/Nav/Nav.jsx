@@ -25,6 +25,7 @@ import {
   startSession,
   endSession,
 } from "./loginSlice";
+import axios from "axios";
 
 function Nav() {
   const dropdown = useSelector((state) => state.dropdown.value);
@@ -46,22 +47,17 @@ function Nav() {
     dispatch(setName(""));
     dispatch(setPassword(""));
     localStorage.removeItem("currentUser");
-    setLogging(false)
+    setLogging(false);
   };
 
   const handleLogIn = async (e) => {
     e.preventDefault();
     setLogging(true);
 
-    const users = await import("../../constants/profiles.json").then(
-      (module) => module.default
-    );
+    const response = await axios.post("http://localhost:3001/login", user);
 
-    const exists = users.find(
-      (x) => x.email === user.email && x.password === user.password
-    );
-
-    if (exists) {
+    if (response.data.success) {
+      const exists = response.data.user;
       localStorage.setItem("currentUser", user.email);
       localStorage.setItem("userName", exists.name);
       localStorage.setItem("userPass", user.password);
@@ -106,8 +102,6 @@ function Nav() {
       <NavButton href={`/cctv`} name={"Cameras"} />
       <NavButton href={`/entranceSec`} name={"Entrance Security"} />
       <NavButton href={`/doorSec`} name={"Door Security"} />
-      {"Simple dropdown " + JSON.stringify(dropdown)}
-      {"big form " + JSON.stringify(form)}
 
       {/* Desktop Navigation */}
       <div className="big_screen">
