@@ -73,21 +73,33 @@ app.post("/register", async (req, res) => {
   try {
     const { email, name, password } = req.body;
 
+    console.log("check creds");
+    console.log(email);
+    console.log(name);
+    console.log(password);
     if (!email || !password || !name)
       res.send(400).status({ message: "Enter credentials", success: false });
 
     const usersBuffer = fs.readFileSync("./constants/profiles.json");
     const users = JSON.parse(usersBuffer);
+    console.log("read profiles");
+    console.log(users);
 
     const user = users.find((x) => x.email === email);
+    console.log("find user");
+    console.log(user);
     if (user) {
       res.status(400).send({ message: "User already exists", success: false });
     }
-    const newUser = { email, name, password };
 
+    const newUser = { email, name, password };
+    console.log("new user");
+    console.log(newUser);
     users.push(newUser);
 
-    fs.writeFileSync("./constants/profiles.json", users, "utf-8", (err) => {
+    const usersString = JSON.stringify(users)
+
+    fs.writeFileSync("./constants/profiles.json", usersString, "utf-8", (err) => {
       if (err) throw err;
       console.log("user added");
     });

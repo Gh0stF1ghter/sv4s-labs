@@ -1,12 +1,1 @@
-[
-    {
-        "name": "Joe Doe",
-        "email": "J.Doe@gmail.com",
-        "password": "0451"
-    },
-    {
-        "name": "Steve Harrelson",
-        "email": "B2dB0y@outlook.com",
-        "password": "1234567890"
-    }
-]
+[{"name":"Joe Doe","email":"J.Doe@gmail.com","password":"0451"},{"name":"Steve Harrelson","email":"B2dB0y@outlook.com","password":"1234567890"},{"email":"jane@doe.ru","name":"Joe","password":"12345"}]

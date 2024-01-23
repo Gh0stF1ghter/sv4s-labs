@@ -10,6 +10,8 @@ export const loginSlice = createSlice({
       session: false,
       opened: false,
       openedSmall: false,
+      openedReg: false,
+      openedSmallReg: false,
     },
   },
 
@@ -32,8 +34,14 @@ export const loginSlice = createSlice({
     open: (state) => {
       state.value.opened = true;
     },
+    openReg: state => {
+      state.value.openedReg = true;
+    },
     close: (state) => {
       state.value.opened = false;
+    },
+    closeReg: (state) => {
+      state.value.openedReg = false;
     },
     openSmall: (state) => {
       state.value.openedSmall = true;
@@ -41,6 +49,13 @@ export const loginSlice = createSlice({
     closeSmall: (state) => {
       state.value.openedSmall = false;
     },
+    openSmallReg: (state) => {
+      state.value.openedSmallReg = true;
+    },
+    closeSmallReg: (state) => {
+      state.value.openedSmallReg = false;
+    },
+
   },
 });
 
@@ -53,8 +68,12 @@ export const {
   endSession,
   open,
   close,
+  openReg,
+  closeReg,
   openSmall,
   closeSmall,
+  openSmallReg,
+  closeSmallReg
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

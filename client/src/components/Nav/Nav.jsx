@@ -24,14 +24,21 @@ import {
   closeSmall,
   startSession,
   endSession,
+  openReg,
+  openSmallReg,
+  closeSmallReg,
+  closeReg,
 } from "./loginSlice";
 import axios from "axios";
+import Register from "../LogIn/Register";
 
 function Nav() {
   const dropdown = useSelector((state) => state.dropdown.value);
   const smallDropdown = useSelector((state) => state.smallDropdown.value);
   const form = useSelector((state) => state.login.value.opened);
   const smallForm = useSelector((state) => state.login.value.openedSmall);
+  const regform = useSelector((state) => state.login.value.openedReg);
+  const smallregForm = useSelector((state) => state.login.value.openedSmallReg);
   const session = useSelector((state) => state.login.value.session);
 
   const user = useSelector((state) => state.login.value);
@@ -39,6 +46,7 @@ function Nav() {
   const dispatch = useDispatch();
 
   const [logging, setLogging] = useState(false);
+  const [registering, setRegistering] = useState(false);
   const [error, setError] = useState(false);
 
   const signOut = () => {
@@ -48,6 +56,24 @@ function Nav() {
     dispatch(setPassword(""));
     localStorage.removeItem("currentUser");
     setLogging(false);
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setLogging(true);
+
+    const response = await axios.post("http://localhost:3001/register", user);
+    if (response.data.success) {
+      const user = response.data.newUser;
+
+      localStorage.setItem("currentUser", user.email);
+      localStorage.setItem("userName", user.name);
+      localStorage.setItem("userPass", user.password);
+      dispatch(startSession());
+    } else {
+      setLogging(false);
+      setError(true);
+    }
   };
 
   const handleLogIn = async (e) => {
@@ -144,28 +170,52 @@ function Nav() {
             </ClickAwayListener>
           </div>
         ) : (
-          <ClickAwayListener onClickAway={() => dispatch(close())}>
-            <Box sx={{ position: "flex" }}>
-              <Button
-                variant="outlined"
-                type="button"
-                onClick={() => dispatch(open())}
-                className="black_btn"
-              >
-                Sign In
-              </Button>
-              {form ? (
-                <Box className="dropdown drop-shadow-md">
-                  {error && (
-                    <Alert severity="error" className="w-full rounded-lg">
-                      No such user in base
-                    </Alert>
-                  )}
-                  <LogIn logging={logging} handleSubmit={handleLogIn} />
-                </Box>
-              ) : null}
-            </Box>
-          </ClickAwayListener>
+          <>
+            <ClickAwayListener onClickAway={() => dispatch(close())}>
+              <Box sx={{ position: "flex" }}>
+                <Button
+                  variant="outlined"
+                  type="button"
+                  onClick={() => dispatch(open())}
+                  className="black_btn"
+                >
+                  Sign In
+                </Button>
+                {form ? (
+                  <Box className="dropdown drop-shadow-md">
+                    {error && (
+                      <Alert severity="error" className="w-full rounded-lg">
+                        No such user in base
+                      </Alert>
+                    )}
+                    <LogIn logging={logging} handleSubmit={handleLogIn} />
+                  </Box>
+                ) : null}
+              </Box>
+            </ClickAwayListener>
+            <ClickAwayListener onClickAway={() => dispatch(closeReg())}>
+              <Box sx={{ position: "flex" }}>
+                <Button
+                  variant="outlined"
+                  type="button"
+                  onClick={() => dispatch(openReg())}
+                  className="black_btn"
+                >
+                  Sign Up
+                </Button>
+                {regform ? (
+                  <Box className="dropdown drop-shadow-md">
+                    {error && (
+                      <Alert severity="error" className="w-full rounded-lg">
+                        reg failed
+                      </Alert>
+                    )}
+                    <Register logging={logging} handleSubmit={handleRegister} />
+                  </Box>
+                ) : null}
+              </Box>
+            </ClickAwayListener>
+          </>
         )}
       </div>
       {/* Mobile */}
@@ -215,28 +265,52 @@ function Nav() {
             </Box>
           </ClickAwayListener>
         ) : (
-          <ClickAwayListener onClickAway={() => dispatch(closeSmall())}>
-            <Box>
-              <Button
-                variant="outlined"
-                type="button"
-                onClick={() => dispatch(openSmall())}
-                className="black_btn"
-              >
-                Sign In
-              </Button>
-              {smallForm && (
-                <Box className="dropdown drop-shadow-md">
-                  {error && (
-                    <div className="w-full text-red-600 bg-red-400 rounded-lg">
-                      No such user in base
-                    </div>
-                  )}
-                  <LogIn logging={logging} handleSubmit={handleLogIn} />
-                </Box>
-              )}
-            </Box>
-          </ClickAwayListener>
+          <>
+            <ClickAwayListener onClickAway={() => dispatch(closeSmall())}>
+              <Box>
+                <Button
+                  variant="outlined"
+                  type="button"
+                  onClick={() => dispatch(openSmall())}
+                  className="black_btn"
+                >
+                  Sign In
+                </Button>
+                {smallForm && (
+                  <Box className="dropdown drop-shadow-md">
+                    {error && (
+                      <div className="w-full text-red-600 bg-red-400 rounded-lg">
+                        No such user in base
+                      </div>
+                    )}
+                    <LogIn logging={logging} handleSubmit={handleLogIn} />
+                  </Box>
+                )}
+              </Box>
+            </ClickAwayListener>
+            <ClickAwayListener onClickAway={() => dispatch(closeSmallReg())}>
+              <Box sx={{ position: "flex" }}>
+                <Button
+                  variant="outlined"
+                  type="button"
+                  onClick={() => dispatch(openSmallReg())}
+                  className="black_btn"
+                >
+                  Sign Up
+                </Button>
+                {smallregForm ? (
+                  <Box className="dropdown drop-shadow-md">
+                    {error && (
+                      <Alert severity="error" className="w-full rounded-lg">
+                        reg failed
+                      </Alert>
+                    )}
+                    <Register logging={logging} handleSubmit={handleRegister} />
+                  </Box>
+                ) : null}
+              </Box>
+            </ClickAwayListener>
+          </>
         )}
       </div>
     </nav>
